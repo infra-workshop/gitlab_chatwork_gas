@@ -5,6 +5,10 @@ GitlabChatwork: GitLab webhook endpoint creator for ChatWork using Google Apps S
 Thanks for https://github.com/cw-shibuya/chatwork-client-gas  
 Google App Script Project Key: `1X9e-skIjQXVAojqOr2l6lVJg2p2DmnqYp3y7WpVl-KH1Odx-FInM-yUg`
 
+## Usage
+
+https://qiita.com/takotakot/items/ded60194092ccba950c4
+
 ## License
 
 These codes are licensed under CC0 or MIT.
