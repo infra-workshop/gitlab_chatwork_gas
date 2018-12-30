@@ -45,7 +45,10 @@ function constructChatworkMessageFromGitLabWiki(data) {
 
 function constructChatworkMessageFromGitLabNote(data) {
   if('issue' in data) {
-    return data['issue']['description'];
+    if('changed the description' == data['object_attributes']['description']) {
+      return data['object_attributes']['description'] + "\n" + data['issue']['description'];
+    }
+    return data['object_attributes']['description'];
   }
   return data['object_attributes']['note'];
 }
