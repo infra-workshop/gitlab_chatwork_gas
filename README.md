@@ -14,7 +14,7 @@ https://qiita.com/takotakot/items/ded60194092ccba950c4
 These codes are licensed under CC0 or MIT.
 
 [![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png "CC0")](http://creativecommons.org/publicdomain/zero/1.0/deed.ja)  
-[MIT](https://opensource.org/licenses/MIT) (If you need use `Copyright (c) 2018 Infra-Workshop`)
+[MIT](https://opensource.org/licenses/MIT) (If you need use `Copyright (c) 2018, 2022 Infra-Workshop`)
 
 ## 注意
 
