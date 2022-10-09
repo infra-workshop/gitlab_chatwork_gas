@@ -1,28 +1,64 @@
-var CHATWORK_API_KEY = "";
-var CHATWORK_ROOM_ID = "";
-var ChatWorkClient = ChatWorkClient;
+let CHATWORK_API_KEY = "";
+let CHATWORK_ROOM_ID = "";
+let ChatWorkClient;
 
-function setChatworkAPIKey(key) {
+/* eslint-disable no-unused-vars */
+/**
+ * Set ChatWork API key.
+ *
+ * @param {string} key - API key
+ */
+function setChatworkAPIKey(key: string): void {
+  /* eslint-enable no-unused-vars */
   CHATWORK_API_KEY = key;
 }
 
-function setChatworkRoomId(id) {
+/* eslint-disable no-unused-vars */
+/**
+ * Set ChatWork Room ID.
+ *
+ * @param {string} id - Room ID
+ */
+function setChatworkRoomId(id: string): void {
+  /* eslint-enable no-unused-vars */
   CHATWORK_ROOM_ID = id;
 }
 
-function setChatWorkClient(client) {
+/* eslint-disable no-unused-vars */
+/**
+ * Set ChatWork client.
+ *
+ * @param {any} client - ChatWork client.
+ */
+function setChatWorkClient(client: any): void {
+  /* eslint-enable no-unused-vars */
   ChatWorkClient = client;
 }
 
-function sendMessageToChatwork(message) {
-  var client = ChatWorkClient.factory({ token: CHATWORK_API_KEY });
+/* eslint-disable no-unused-vars */
+/**
+ * Send message to ChatWork room.
+ *
+ * @param {string} message - Message to send.
+ */
+function sendMessageToChatwork(message: string): void {
+  /* eslint-enable no-unused-vars */
+  const client = ChatWorkClient.factory({ token: CHATWORK_API_KEY });
   client.sendMessage({ room_id: CHATWORK_ROOM_ID, body: message });
 }
 
-function constructChatworkMessageFromGitLab(data) {
-  var title =
+/* eslint-disable no-unused-vars */
+/**
+ * Construct message fron POST data.
+ *
+ * @param {Object} data - POST data.
+ * @return {string}
+ */
+function constructChatworkMessageFromGitLab(data: Object): string {
+  /* eslint-enable no-unused-vars */
+  const title =
     data["object_attributes"]["url"] + " is updated by " + data["user"]["name"];
-  var message = "";
+  let message = "";
   switch (true) {
     case data["object_kind"] == "wiki_page":
       message = constructChatworkMessageFromGitLabWiki(data);
@@ -40,11 +76,23 @@ function constructChatworkMessageFromGitLab(data) {
   return "[info][title]" + title + "[/title]" + message + "[/info]";
 }
 
-function constructChatworkMessageFromGitLabWiki(data) {
+/**
+ * Construct message when the post is from wiki.
+ *
+ * @param {Object} data - POST data.
+ * @return {string}
+ */
+function constructChatworkMessageFromGitLabWiki(data): string {
   return data["object_attributes"]["content"];
 }
 
-function constructChatworkMessageFromGitLabNote(data) {
+/**
+ * Construct message when the post is from note.
+ *
+ * @param {Object} data - POST data.
+ * @return {string}
+ */
+function constructChatworkMessageFromGitLabNote(data): string {
   if ("issue" in data) {
     if ("changed the description" == data["object_attributes"]["description"]) {
       return (
@@ -58,6 +106,12 @@ function constructChatworkMessageFromGitLabNote(data) {
   return data["object_attributes"]["note"];
 }
 
-function constructChatworkMessageFromGitLabIssue(data) {
+/**
+ * Construct message when the post is from issue.
+ *
+ * @param {Object} data - POST data.
+ * @return {string}
+ */
+function constructChatworkMessageFromGitLabIssue(data): string {
   return data["object_attributes"]["description"];
 }
