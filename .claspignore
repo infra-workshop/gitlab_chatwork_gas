@@ -14,3 +14,4 @@ node_modules/**
 
 # sample files
 doPost.js
+.eslintrc.js
